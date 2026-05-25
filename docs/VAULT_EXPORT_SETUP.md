@@ -40,36 +40,38 @@ This will:
 
 ## GitHub Actions Setup
 
-### 1. Create GitHub Secrets
+⚠️ **Important:** The Obsidian API runs locally on your machine (`127.0.0.1:27124`) and is not accessible from GitHub Actions cloud runners.
 
-Go to your repository **Settings → Secrets and variables → Actions**
+### Recommended: Local Export + Auto-Deploy
 
-Add two secrets:
-- `OBSIDIAN_API_URL` → `https://127.0.0.1:27124`
-- `OBSIDIAN_AUTH_TOKEN` → Your auth token
+The practical workflow is:
 
-### 2. Configure Variables (Optional)
+1. **Run export locally when needed:**
+   ```bash
+   OBSIDIAN_AUTH_TOKEN=your_token npm run export-vault:auto
+   ```
 
-Add a repository variable:
-- `PROJECTS_LIST` → Comma-separated list of projects (e.g., `Project 1,Project 2`)
+2. **The script automatically:**
+   - Exports projects from your vault
+   - Commits changes to git
+   - Pushes to GitHub
 
-If not set, defaults to the hardcoded list in the script.
+3. **GitHub Actions then:**
+   - Builds the static site
+   - Deploys to GitHub Pages
 
-### 3. Enable Workflow
+### Optional: Enable GitHub Actions Workflow
 
-The workflow file is already at `.github/workflows/export-vault.yml`
+If you set up a **self-hosted runner** on your machine (advanced):
 
-It runs:
-- **Daily at 00:00 UTC** (customize in the workflow file if desired)
-- **Manually** via "Run workflow" button in GitHub Actions tab
+1. Go to **Settings → Secrets and variables → Actions**
+2. Add secrets:
+   - `OBSIDIAN_API_URL` → `https://127.0.0.1:27124`
+   - `OBSIDIAN_AUTH_TOKEN` → Your auth token
 
-### 4. Workflow Behavior
+3. Configure self-hosted runner in **Settings → Actions → Runners**
 
-When triggered, the workflow:
-1. Exports all projects from your Obsidian vault
-2. Commits changes with message: "chore: auto-export projects from Obsidian vault"
-3. Builds the static site
-4. The site auto-deploys to GitHub Pages
+Otherwise, the workflow will still build and deploy the site (just without live Obsidian export).
 
 ## Customizing Export Frequency
 
