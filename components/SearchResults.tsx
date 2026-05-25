@@ -16,8 +16,9 @@ export default function SearchResults() {
       setIsLoading(true);
 
       try {
-        // Charger l'index de recherche généré au build
-        const indexResponse = await fetch('/search-index.json');
+        // Charger l'index de recherche généré au build (respecte basePath)
+        const indexUrl = `${router.basePath || ''}/search-index.json`;
+        const indexResponse = await fetch(indexUrl);
         const index: SearchIndex[] = await indexResponse.json();
 
         // Initialiser Fuse.js avec l'index
