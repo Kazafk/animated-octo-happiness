@@ -10,8 +10,7 @@ const GIT_AUTO_COMMIT = process.env.GIT_AUTO_COMMIT === 'true';
 
 // Projects list: can be simple names or paths like "Mainframe Virtualization/mvs-tk5"
 const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST ||
-  'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,' +
-  'Mainframe Virtualization/mvs-tk5,Mainframe Virtualization/suite3270-4.5'
+  'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,Mainframe Virtualization'
 ).split(',').map(p => p.trim());
 
 if (!AUTH_TOKEN) {
