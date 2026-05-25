@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="h-56 bg-primary border-b-12 border-dark relative overflow-hidden">
           {project.featured_image ? (
             <Image
-              src={project.featured_image}
+              src={`/projects/${project.slug}/${project.featured_image}`}
               alt={project.title}
               width={400}
               height={200}

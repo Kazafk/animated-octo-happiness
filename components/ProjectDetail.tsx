@@ -15,7 +15,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         {project.featured_image && (
           <div className="mb-8 border-12 border-primary h-96 relative overflow-hidden">
             <Image
-              src={project.featured_image}
+              src={`/projects/${project.slug}/${project.featured_image}`}
               alt={project.title}
               width={800}
               height={400}
