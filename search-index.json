@@ -1,17 +1,17 @@
 [
   {
-    "id": "suite3270-45",
-    "slug": "suite3270-45",
-    "title": "suite3270-4.5",
-    "description": "Description du projet (à remplir)",
-    "tags": []
-  },
-  {
-    "id": "mvs-tk5",
-    "slug": "mvs-tk5",
-    "title": "mvs-tk5",
-    "description": "Description du projet (à remplir)",
-    "tags": []
+    "id": "mainframe-virtualization",
+    "slug": "mainframe-virtualization",
+    "title": "Mainframe Virtualization",
+    "description": "Émulation et virtualisation d'environnements mainframe (MVS-TK5, x3270)",
+    "tags": [
+      "mainframe",
+      "virtualization",
+      "emulation",
+      "mvs",
+      "3270",
+      "legacy"
+    ]
   },
   {
     "id": "pacbase-transpiler",
