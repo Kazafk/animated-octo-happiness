@@ -35,11 +35,21 @@ npm run export-vault
 
 ### Automatisé (Localement)
 
-Export automatique avec commit et push:
+Export automatique avec commit et push - 3 options:
 
+**Option 1 (Simplest - recommandé):**
 ```bash
-# Exporte, commit, et push automatiquement
-OBSIDIAN_AUTH_TOKEN=your_token npm run export-vault:auto
+npm run export
+```
+
+**Option 2 (PowerShell):**
+```powershell
+.\export.ps1
+```
+
+**Option 3 (Bash):**
+```bash
+./export.sh
 ```
 
 Le site se rebuild et déploie automatiquement via GitHub Actions après chaque push.
