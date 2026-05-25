@@ -1,0 +1,41 @@
+name: Auto-Export Obsidian Vault
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Export from Obsidian Vault
+        env:
+          OBSIDIAN_API_URL: ${{ secrets.OBSIDIAN_API_URL }}
+          OBSIDIAN_AUTH_TOKEN: ${{ secrets.OBSIDIAN_AUTH_TOKEN }}
+          PROJECTS_LIST: ${{ vars.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,Excalidraw,IA & Management,Pacbase-transpiler,claims-management,modern-interactive-site,mvs-tk5,suite3270-4.5' }}
+          GIT_AUTO_COMMIT: 'true'
+        run: node scripts/auto-export-vault.js
+
+      - name: Build static site
+        if: success()
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out/

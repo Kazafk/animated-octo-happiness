@@ -25,13 +25,28 @@ npm run dev
 
 ## Export depuis le vault
 
+### Manuel
+
 Exporter les projets du vault Obsidian:
 
 ```bash
 npm run export-vault
 ```
 
-Cela peuple le répertoire `projects/` avec les README et métadonnées de chaque projet.
+### Automatisé (GitHub Actions)
+
+Configurer l'export automatique qui s'exécute quotidiennement:
+
+1. Voir [docs/VAULT_EXPORT_SETUP.md](docs/VAULT_EXPORT_SETUP.md) pour les instructions complètes
+2. Ajouter secrets GitHub: `OBSIDIAN_API_URL` et `OBSIDIAN_AUTH_TOKEN`
+3. Le workflow s'exécute quotidiennement et met à jour automatiquement le site
+
+```bash
+# Localement avec variables d'environnement
+OBSIDIAN_AUTH_TOKEN=your_token npm run export-vault:auto
+```
+
+Ces commandes peuplent le répertoire `projects/` avec les README et métadonnées de chaque projet.
 
 ## Build
 

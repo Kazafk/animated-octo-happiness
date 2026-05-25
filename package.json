@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "npx serve out -l 3000",
     "lint": "next lint",
-    "export-vault": "node scripts/export-vault.js"
+    "export-vault": "node scripts/export-vault.js",
+    "export-vault:auto": "node scripts/auto-export-vault.js"
   },
   "engines": {
     "node": ">=18.17.0"
