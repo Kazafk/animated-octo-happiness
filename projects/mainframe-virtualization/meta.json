@@ -1,25 +1,15 @@
-{
+﻿{
   "id": "mainframe-virtualization",
   "title": "Mainframe Virtualization",
-  "description": "Émulation et virtualisation d'environnements mainframe (MVS-TK5, x3270)",
-  "content_preview": "Ensemble de projets pour émulation et accès aux systèmes mainframe",
-  "tags": [
-    "mainframe",
-    "virtualization",
-    "emulation",
-    "mvs",
-    "3270",
-    "legacy"
-  ],
-  "languages": [
-    "COBOL",
-    "JCL",
-    "REXX"
-  ],
+  "description": "Ã‰mulation et virtualisation d'environnements mainframe (MVS-TK5, x3270)",
+  "content_preview": "Ensemble de projets pour Ã©mulation et accÃ¨s aux systÃ¨mes mainframe",
+  "tags": ["mainframe", "virtualization", "emulation", "mvs", "3270", "legacy"],
+  "languages": ["COBOL", "JCL", "REXX"],
   "date_created": "2026-05-25T18:00:00.000Z",
   "date_updated": "2026-05-25T18:00:00.000Z",
   "featured": false,
   "repository": null,
   "live_demo": null,
-  "featured_image": "featured-image.png"
+  "featured_image": "featured-image.svg"
 }
+

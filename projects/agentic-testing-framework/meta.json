@@ -1,8 +1,8 @@
-{
+﻿{
   "id": "agentic-testing-framework",
   "title": "Agentic Testing Framework",
-  "description": "Description du projet (à remplir)",
-  "content_preview": "Preview (auto-généré du README)",
+  "description": "Description du projet (Ã  remplir)",
+  "content_preview": "Preview (auto-gÃ©nÃ©rÃ© du README)",
   "tags": [],
   "languages": [],
   "date_created": "2026-05-25T16:50:21.637Z",
@@ -10,5 +10,6 @@
   "featured": false,
   "repository": null,
   "live_demo": null,
-  "featured_image": "featured-image.png"
+  "featured_image": "featured-image.svg"
 }
+
