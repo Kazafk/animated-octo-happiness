@@ -38,6 +38,7 @@ export default function SearchResults() {
     };
 
     performSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
   if (!q) {
