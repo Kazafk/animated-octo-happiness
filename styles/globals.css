@@ -2,15 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-light text-dark font-sans;
+}
+
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
-
-  body {
-    @apply bg-light text-dark;
-  }
-
   h1 {
     @apply text-4xl font-bold mb-4;
   }
