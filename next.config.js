@@ -12,11 +12,10 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   output: 'export',
-  // basePath for GitHub Pages project hosting (subdirectory)
-  // GitHub Pages already serves at: https://Kazafk.github.io/animated-octo-happiness/
-  // So basePath is just the subdirectory within the repo
-  basePath: '/site-vitrine',
-  assetPrefix: '/site-vitrine/',
+  // basePath for GitHub Pages: https://Kazafk.github.io/animated-octo-happiness/
+  // Include full path from domain root
+  basePath: '/animated-octo-happiness',
+  assetPrefix: '/animated-octo-happiness/',
   images: {
     unoptimized: true,
   },
