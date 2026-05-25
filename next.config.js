@@ -1,6 +1,11 @@
 // Générer l'index de recherche au build
-const { generateSearchIndex } = require('./lib/generateIndex.js');
-generateSearchIndex();
+try {
+  const { generateSearchIndex } = require('./lib/generateIndex.js');
+  generateSearchIndex();
+} catch (err) {
+  console.warn('⚠️  Could not generate search index at config time:', err.message);
+  // Continue building - index generation can fail gracefully
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

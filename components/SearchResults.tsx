@@ -47,7 +47,7 @@ export default function SearchResults() {
     <div className="py-8">
       <h1 className="text-4xl font-bold mb-2">Résultats de la recherche</h1>
       <p className="text-gray-600 mb-8">
-        Recherche pour: <span className="font-bold text-dark">"{q}"</span>
+        Recherche pour: <span className="font-bold text-dark">&quot;{q}&quot;</span>
       </p>
 
       {isLoading ? (
@@ -57,7 +57,7 @@ export default function SearchResults() {
       ) : (
         <ProjectGrid
           projects={results}
-          emptyMessage={`Aucun résultat trouvé pour "${q}"`}
+          emptyMessage={`Aucun résultat trouvé pour &quot;${q}&quot;`}
         />
       )}
     </div>

@@ -68,6 +68,12 @@ export function getProject(slug: string): Project | null {
  * Liste tous les projets (par ordre de date modifiée, desc)
  */
 export function getAllProjects(): Project[] {
+  // Créer le répertoire s'il n'existe pas
+  if (!fs.existsSync(PROJECTS_DIR)) {
+    fs.mkdirSync(PROJECTS_DIR, { recursive: true });
+    return [];
+  }
+
   const projectDirs = fs.readdirSync(PROJECTS_DIR);
 
   return projectDirs

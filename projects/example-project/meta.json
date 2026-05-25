@@ -1,0 +1,14 @@
+{
+  "id": "example-project",
+  "title": "Example Project",
+  "description": "Un projet exemple pour tester la structure",
+  "content_preview": "Description et contenu du projet.",
+  "tags": ["example", "test"],
+  "languages": ["JavaScript"],
+  "date_created": "2026-05-25",
+  "date_updated": "2026-05-25",
+  "featured": true,
+  "repository": "https://github.com/example/repo",
+  "live_demo": null,
+  "featured_image": "featured-image.png"
+}
