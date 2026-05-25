@@ -13,9 +13,10 @@ const nextConfig = {
   trailingSlash: true,
   output: 'export',
   // basePath for GitHub Pages project hosting (subdirectory)
-  // GitHub Pages serves at: https://username.github.io/repo-name/site-vitrine/
-  basePath: '/animated-octo-happiness/site-vitrine',
-  assetPrefix: '/animated-octo-happiness/site-vitrine/',
+  // GitHub Pages already serves at: https://Kazafk.github.io/animated-octo-happiness/
+  // So basePath is just the subdirectory within the repo
+  basePath: '/site-vitrine',
+  assetPrefix: '/site-vitrine/',
   images: {
     unoptimized: true,
   },
