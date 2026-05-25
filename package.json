@@ -4,11 +4,15 @@
   "description": "Portfolio vitrine partageant les projets du vault Obsidian",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "eslint .",
+    "build": "next build",
+    "start": "npx serve out -l 3000",
+    "lint": "next lint",
     "export-vault": "node scripts/export-vault.js"
   },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "private": true,
   "dependencies": {
     "next": "^14.0.0",
     "react": "^18.2.0",
