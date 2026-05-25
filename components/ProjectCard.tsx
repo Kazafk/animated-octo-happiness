@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { ProjectMeta } from '@/lib/projects';
 
 interface ProjectCardProps {
@@ -9,7 +12,13 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.slug}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden transition-all hover:scale-105 cursor-pointer animate-slide-up">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden transition-all cursor-pointer"
+      >
         {/* Image de couverture */}
         <div className="h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden relative">
           {project.featured_image ? (
@@ -36,10 +45,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {project.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 bg-accent text-dark text-xs rounded-full"
-              >
+              <span key={tag} className="px-2 py-1 bg-accent text-dark text-xs rounded-full">
                 {tag}
               </span>
             ))}
@@ -55,7 +61,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             Mis à jour: {new Date(project.date_updated).toLocaleDateString('fr-FR')}
           </div>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }

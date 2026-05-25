@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "npx serve out -l 3000",
     "lint": "next lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,css,json,md}\"",
     "export": "node scripts/auto-export-vault.js",
     "export-vault": "node scripts/export-vault.js",
     "export-vault:auto": "node scripts/auto-export-vault.js"
@@ -16,22 +18,24 @@
   },
   "private": true,
   "dependencies": {
+    "framer-motion": "^12.40.0",
+    "fuse.js": "^7.0.0",
+    "highlight.js": "^11.8.0",
+    "markdown-it": "^13.0.1",
     "next": "^14.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "fuse.js": "^7.0.0",
-    "markdown-it": "^13.0.1",
-    "highlight.js": "^11.8.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^13.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
-    "typescript": "^5.0.0",
-    "tailwindcss": "^3.3.0",
-    "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.40.0",
-    "eslint-config-next": "^14.0.0"
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.4.0",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.0"
   }
 }
