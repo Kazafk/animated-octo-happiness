@@ -1,0 +1,75 @@
+[
+  {
+    "id": "suite3270-45",
+    "slug": "suite3270-45",
+    "title": "suite3270-4.5",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "mvs-tk5",
+    "slug": "mvs-tk5",
+    "title": "mvs-tk5",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "modern-interactive-site",
+    "slug": "modern-interactive-site",
+    "title": "modern-interactive-site",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "claims-management",
+    "slug": "claims-management",
+    "title": "claims-management",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "pacbase-transpiler",
+    "slug": "pacbase-transpiler",
+    "title": "Pacbase-transpiler",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "ia--management",
+    "slug": "ia--management",
+    "title": "IA & Management",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "excalidraw",
+    "slug": "excalidraw",
+    "title": "Excalidraw",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "carto-cobol",
+    "slug": "carto-cobol",
+    "title": "Carto Cobol",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "agentic-testing-framework",
+    "slug": "agentic-testing-framework",
+    "title": "Agentic Testing Framework",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
+    "id": "example-project",
+    "slug": "example-project",
+    "title": "Example Project",
+    "description": "Un projet exemple pour tester la structure",
+    "tags": [
+      "example",
+      "test"
+    ]
+  }
+]
