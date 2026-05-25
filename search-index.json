@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "mainframe-virtualization",
+    "slug": "mainframe-virtualization",
+    "title": "Mainframe Virtualization",
+    "description": "Ã‰mulation et virtualisation d'environnements mainframe (MVS-TK5, x3270)",
+    "tags": [
+      "mainframe",
+      "virtualization",
+      "emulation",
+      "mvs",
+      "3270",
+      "legacy"
+    ]
+  },
+  {
+    "id": "pacbase-transpiler",
+    "slug": "pacbase-transpiler",
+    "title": "Pacbase-transpiler",
+    "description": "Description du projet (Ã  remplir)",
+    "tags": []
+  },
+  {
+    "id": "ia--management",
+    "slug": "ia--management",
+    "title": "IA & Management",
+    "description": "Description du projet (Ã  remplir)",
+    "tags": []
+  },
+  {
+    "id": "carto-cobol",
+    "slug": "carto-cobol",
+    "title": "Carto Cobol",
+    "description": "Description du projet (Ã  remplir)",
+    "tags": []
+  },
+  {
+    "id": "agentic-testing-framework",
+    "slug": "agentic-testing-framework",
+    "title": "Agentic Testing Framework",
+    "description": "Description du projet (Ã  remplir)",
+    "tags": []
+  }
+]
