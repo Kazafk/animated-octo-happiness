@@ -21,6 +21,13 @@
     "tags": []
   },
   {
+    "id": "ia--management",
+    "slug": "ia--management",
+    "title": "IA & Management",
+    "description": "Description du projet (à remplir)",
+    "tags": []
+  },
+  {
     "id": "carto-cobol",
     "slug": "carto-cobol",
     "title": "Carto Cobol",
