@@ -13,8 +13,9 @@ const nextConfig = {
   trailingSlash: true,
   output: 'export',
   // basePath for GitHub Pages project hosting (subdirectory)
-  basePath: '/site-vitrine',
-  assetPrefix: '/site-vitrine/',
+  // GitHub Pages serves at: https://username.github.io/repo-name/site-vitrine/
+  basePath: '/animated-octo-happiness/site-vitrine',
+  assetPrefix: '/animated-octo-happiness/site-vitrine/',
   images: {
     unoptimized: true,
   },
