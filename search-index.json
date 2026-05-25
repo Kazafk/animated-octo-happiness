@@ -61,15 +61,5 @@
     "title": "Agentic Testing Framework",
     "description": "Description du projet (à remplir)",
     "tags": []
-  },
-  {
-    "id": "example-project",
-    "slug": "example-project",
-    "title": "Example Project",
-    "description": "Un projet exemple pour tester la structure",
-    "tags": [
-      "example",
-      "test"
-    ]
   }
 ]
