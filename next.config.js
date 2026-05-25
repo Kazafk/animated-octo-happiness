@@ -1,3 +1,7 @@
+// Générer l'index de recherche au build
+const { generateSearchIndex } = require('./lib/generateIndex');
+generateSearchIndex();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
