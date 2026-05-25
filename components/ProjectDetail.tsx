@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Project } from '@/lib/projects';
 import MarkdownRenderer from './MarkdownRenderer';
 
@@ -12,11 +13,14 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       {/* En-tête */}
       <header className="mb-8 border-b pb-6">
         {project.featured_image && (
-          <div className="mb-6 rounded-lg overflow-hidden h-96">
-            <img
+          <div className="mb-6 rounded-lg overflow-hidden h-96 relative">
+            <Image
               src={project.featured_image}
               alt={project.title}
+              width={800}
+              height={400}
               className="w-full h-full object-cover"
+              priority={true}
             />
           </div>
         )}

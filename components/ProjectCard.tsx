@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ProjectMeta } from '@/lib/projects';
 
 interface ProjectCardProps {
@@ -10,12 +11,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <Link href={`/projects/${project.slug}`}>
       <div className="bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden transition-all hover:scale-105 cursor-pointer animate-slide-up">
         {/* Image de couverture */}
-        <div className="h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
+        <div className="h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden relative">
           {project.featured_image ? (
-            <img
+            <Image
               src={project.featured_image}
               alt={project.title}
+              width={400}
+              height={200}
               className="w-full h-full object-cover"
+              priority={false}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">
