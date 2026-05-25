@@ -24,18 +24,31 @@ jobs:
           OBSIDIAN_API_URL: ${{ secrets.OBSIDIAN_API_URL }}
           OBSIDIAN_AUTH_TOKEN: ${{ secrets.OBSIDIAN_AUTH_TOKEN }}
           PROJECTS_LIST: ${{ vars.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,Excalidraw,IA & Management,Pacbase-transpiler,claims-management,modern-interactive-site,mvs-tk5,suite3270-4.5' }}
-          GIT_AUTO_COMMIT: 'true'
+          GIT_AUTO_COMMIT: 'false'
         run: node scripts/auto-export-vault.js
+        continue-on-error: true
+
+      - name: Commit export changes (if any)
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          if [[ -n $(git status -s projects/) ]]; then
+            git add projects/
+            git commit -m "chore: auto-export projects from Obsidian vault"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+        continue-on-error: true
 
       - name: Build static site
-        if: success()
         run: |
           npm ci
           npm run build
 
       - name: Deploy to GitHub Pages
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: site
-          path: out/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
