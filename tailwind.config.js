@@ -1,30 +1,47 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: '#FF6B6B',
-        secondary: '#4ECDC4',
-        accent: '#FFE66D',
-        dark: '#2C3E50',
-        light: '#ECF0F1',
+        primary: '#FF6B4A',
+        secondary: '#C1121F',
+        accent: '#FFB703',
+        dark: '#1A1A1A',
+        light: '#FFFAF0',
+        warm: '#E07A5F',
+        burnt: '#8B4513',
+      },
+      fontSize: {
+        '7xl': '5rem',
+        '8xl': '6rem',
+      },
+      fontFamily: {
+        sans: 'system-ui, -apple-system, sans-serif',
+        brutal: 'Georgia, serif',
+      },
+      borderWidth: {
+        8: '8px',
+        12: '12px',
+        16: '16px',
+      },
+      spacing: {
+        14: '3.5rem',
+        18: '4.5rem',
+        24: '6rem',
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in',
-        'slide-up': 'slideUp 0.5s ease-out',
+        'bounce-brutal': 'bounceBrutal 0.6s ease-in-out',
+        'pulse-brutal': 'pulseBrutal 2s cubic-bezier(0.4, 0, 0.6, 1)',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        bounceBrutal: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-12px)' },
         },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
+        pulseBrutal: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' },
         },
       },
     },

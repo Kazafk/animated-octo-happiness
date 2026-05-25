@@ -9,125 +9,196 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
   @apply bg-light text-dark font-sans;
+  font-weight: 600;
 }
 
 @layer base {
   h1 {
-    @apply text-4xl font-bold mb-4;
+    @apply text-7xl font-black mb-6 leading-tight;
+    font-weight: 900;
+    letter-spacing: -2px;
   }
 
   h2 {
-    @apply text-3xl font-bold mb-3;
+    @apply text-5xl font-black mb-6;
+    font-weight: 900;
+    letter-spacing: -1px;
   }
 
   h3 {
-    @apply text-2xl font-bold mb-2;
+    @apply text-4xl font-black mb-4;
+    font-weight: 900;
   }
 
   h4 {
-    @apply text-xl font-bold mb-2;
+    @apply text-2xl font-black mb-3;
+    font-weight: 900;
   }
 
   h5 {
-    @apply text-lg font-bold mb-2;
+    @apply text-xl font-black mb-2;
+    font-weight: 900;
   }
 
   h6 {
-    @apply text-base font-bold mb-2;
+    @apply text-lg font-black mb-2;
+    font-weight: 900;
   }
 
   a {
-    @apply text-primary transition-colors duration-200 hover:text-secondary;
+    @apply text-primary transition-all duration-200 hover:text-secondary font-bold;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
   }
 
   code {
-    @apply bg-gray-200 px-2 py-1 rounded font-mono text-sm;
+    @apply bg-dark text-light px-3 py-2 font-mono text-sm font-bold border-2 border-primary;
   }
 
   pre {
-    @apply bg-dark text-light p-4 rounded-lg overflow-x-auto;
+    @apply bg-dark text-light p-6 overflow-x-auto font-mono border-8 border-secondary;
   }
 
-  pre code {
-    @apply bg-transparent p-0;
+  button {
+    @apply px-6 py-4 font-bold transition-all duration-150 border-4 border-dark;
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+
+  button:hover {
+    @apply transform -translate-y-1;
+  }
+
+  button:active {
+    @apply transform translate-y-0;
   }
 }
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded font-semibold transition-colors duration-200;
+    @apply px-6 py-4 rounded-none font-black transition-all duration-150 border-4 border-dark;
+    font-size: 1.1rem;
   }
 
   .btn-primary {
-    @apply btn bg-primary text-white hover:bg-red-700;
+    @apply btn bg-primary text-light hover:bg-warm border-dark;
+    box-shadow: 8px 8px 0px rgba(26, 26, 26, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 12px 12px 0px rgba(26, 26, 26, 0.4);
+    transform: translate(-2px, -2px);
   }
 
   .btn-secondary {
-    @apply btn bg-secondary text-white hover:bg-teal-600;
+    @apply btn bg-secondary text-light hover:bg-primary border-dark;
+    box-shadow: 8px 8px 0px rgba(26, 26, 26, 0.3);
+  }
+
+  .btn-secondary:hover {
+    box-shadow: 12px 12px 0px rgba(26, 26, 26, 0.4);
+    transform: translate(-2px, -2px);
   }
 
   .btn-accent {
-    @apply btn bg-accent text-dark hover:bg-yellow-400;
+    @apply btn bg-accent text-dark hover:bg-orange-400 border-dark;
+    box-shadow: 8px 8px 0px rgba(26, 26, 26, 0.3);
+  }
+
+  .btn-accent:hover {
+    box-shadow: 12px 12px 0px rgba(26, 26, 26, 0.4);
+    transform: translate(-2px, -2px);
   }
 }
 
+/* Brutaliste brutal elements */
+.brutalist-box {
+  @apply border-8 border-dark;
+  box-shadow: 12px 12px 0px rgba(26, 26, 26, 0.3);
+}
+
+.brutalist-box:hover {
+  box-shadow: 16px 16px 0px rgba(26, 26, 26, 0.4);
+  transform: translate(-2px, -2px);
+  transition: all 0.2s ease;
+}
+
+.brutalist-border {
+  @apply border-12 border-primary;
+}
+
+.brutal-divider {
+  @apply h-2 bg-dark my-12;
+}
+
+.brutal-highlight {
+  @apply bg-accent text-dark font-black px-2 py-1;
+  transform: skew(-10deg);
+}
+
 .markdown-content {
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 .markdown-content h2,
 .markdown-content h3,
 .markdown-content h4 {
-  @apply mt-6 mb-4;
+  @apply mt-8 mb-6 font-black;
+  font-weight: 900;
 }
 
 .markdown-content p {
-  @apply mb-4;
+  @apply mb-6 text-lg;
+  font-weight: 600;
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  @apply mb-4 ml-6;
+  @apply mb-6 ml-8;
 }
 
 .markdown-content li {
-  @apply mb-2;
+  @apply mb-3 font-semibold;
 }
 
 .markdown-content pre {
-  @apply bg-gray-900 text-white p-4 rounded overflow-x-auto mb-4;
+  @apply bg-dark text-light p-6 overflow-x-auto mb-6 border-8 border-secondary font-mono;
 }
 
 .markdown-content code {
-  @apply bg-gray-200 px-2 py-1 rounded text-sm font-mono;
+  @apply bg-dark text-light px-3 py-2 rounded-none text-sm font-mono font-bold border-2 border-primary;
 }
 
 .markdown-content pre code {
-  @apply bg-transparent px-0 py-0;
+  @apply bg-transparent px-0 py-0 border-0;
 }
 
 .markdown-content blockquote {
-  @apply border-l-4 border-primary pl-4 italic text-gray-600 my-4;
+  @apply border-l-12 border-primary pl-6 font-black text-lg my-6 bg-accent bg-opacity-20 py-4 pr-4;
 }
 
 .markdown-content table {
-  @apply w-full border-collapse mb-4;
+  @apply w-full border-collapse mb-6 border-4 border-dark;
 }
 
 .markdown-content th,
 .markdown-content td {
-  @apply border border-gray-300 px-4 py-2;
+  @apply border-2 border-dark px-4 py-3 font-semibold;
 }
 
 .markdown-content th {
-  @apply bg-gray-100 font-semibold;
+  @apply bg-primary text-light font-black;
 }
 
 .markdown-content a {
-  @apply text-primary hover:underline;
+  @apply text-primary hover:text-secondary font-bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }

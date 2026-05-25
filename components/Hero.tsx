@@ -4,33 +4,46 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-      <div className="container mx-auto px-4 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
+    <section className="bg-light border-12 border-primary py-24">
+      <div className="container mx-auto px-8">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl font-bold mb-4"
+          transition={{ duration: 0.6 }}
+          className="mb-8 border-8 border-dark bg-primary text-light p-8 inline-block"
         >
-          Portfolio Technique
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
+          <h1 className="text-8xl font-black leading-tight">
+            PORTFOLIO
+            <br />
+            TECHNIQUE
+          </h1>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl mb-8 max-w-2xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-4xl mb-12"
         >
-          Découvrez une collection complète de projets, frameworks et outils partagés avec la
-          communauté tech. Explorez, apprenez et contribuez.
-        </motion.p>
-        <motion.p
+          <p className="text-3xl font-black text-dark mb-6 leading-tight">
+            Découvrez une collection <span className="bg-accent px-2">RADICALE</span> de projets,
+            frameworks et outils partagés avec la communauté tech.
+          </p>
+          <div className="h-2 bg-dark w-32 mb-6"></div>
+          <p className="text-xl font-bold text-dark leading-relaxed">
+            Explorez, apprenez et contribuez à une vision ouvertement ambitieuse de
+            l&apos;innovation technique.
+          </p>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg opacity-90"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-dark"
         >
-          {/* Le nombre de projets sera mis à jour dynamiquement */}
-        </motion.p>
+          <p className="text-2xl font-black">— 5 PROJETS MAJEURS</p>
+        </motion.div>
       </div>
     </section>
   );

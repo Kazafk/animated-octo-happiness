@@ -13,52 +13,57 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.slug}`}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden transition-all cursor-pointer"
+        whileHover={{ y: -8 }}
+        transition={{ duration: 0.5, type: 'spring', stiffness: 300 }}
+        className="bg-light border-12 border-dark group cursor-pointer"
       >
         {/* Image de couverture */}
-        <div className="h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden relative">
+        <div className="h-56 bg-primary border-b-12 border-dark relative overflow-hidden">
           {project.featured_image ? (
             <Image
               src={project.featured_image}
               alt={project.title}
               width={400}
               height={200}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               priority={false}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">
-              {project.title[0]}
+            <div className="w-full h-full flex items-center justify-center bg-primary text-light">
+              <span className="text-6xl font-black">{project.title[0]}</span>
             </div>
           )}
+          <div className="absolute inset-0 bg-dark opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
         </div>
 
         {/* Contenu */}
-        <div className="p-4">
-          <h3 className="text-xl font-bold text-dark mb-2">{project.title}</h3>
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{project.description}</p>
+        <div className="p-6 border-t-8 border-primary">
+          <h3 className="text-3xl font-black text-dark mb-4 group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+          <p className="text-lg font-bold text-dark mb-6 line-clamp-2">{project.description}</p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {project.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="px-2 py-1 bg-accent text-dark text-xs rounded-full">
-                {tag}
-              </span>
-            ))}
-            {project.tags.length > 3 && (
-              <span className="px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">
-                +{project.tags.length - 3}
-              </span>
-            )}
-          </div>
+          {project.tags.length > 0 && (
+            <div className="flex flex-wrap gap-3 mb-6">
+              {project.tags.slice(0, 4).map((tag) => (
+                <span
+                  key={tag}
+                  className="px-4 py-2 bg-accent text-dark text-sm font-black border-2 border-dark"
+                >
+                  {tag.toUpperCase()}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Date */}
-          <div className="mt-3 text-xs text-gray-500">
-            Mis à jour: {new Date(project.date_updated).toLocaleDateString('fr-FR')}
+          <div className="pt-4 border-t-2 border-dark">
+            <p className="text-sm font-black text-dark uppercase">
+              Mis à jour: {new Date(project.date_updated).toLocaleDateString('fr-FR')}
+            </p>
           </div>
         </div>
       </motion.div>
