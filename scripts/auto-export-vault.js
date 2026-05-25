@@ -9,7 +9,7 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'projects');
 const GIT_AUTO_COMMIT = process.env.GIT_AUTO_COMMIT === 'true';
 
 // Projects list from environment or use default
-const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,Excalidraw,IA & Management,Pacbase-transpiler,claims-management,modern-interactive-site,mvs-tk5,suite3270-4.5').split(',').map(p => p.trim());
+const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,claims-management,modern-interactive-site,mvs-tk5,suite3270-4.5').split(',').map(p => p.trim());
 
 if (!AUTH_TOKEN) {
   console.error('Error: OBSIDIAN_AUTH_TOKEN environment variable is not set');
