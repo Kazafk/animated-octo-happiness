@@ -22,9 +22,7 @@ function initializeMarkdown() {
           );
         } catch (__) {}
       }
-      return (
-        '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
-      );
+      return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
     },
   });
 
@@ -35,10 +33,5 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const renderer = initializeMarkdown();
   const html = renderer.render(content);
 
-  return (
-    <div
-      className="markdown-content"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
+  return <div className="markdown-content" dangerouslySetInnerHTML={{ __html: html }} />;
 }

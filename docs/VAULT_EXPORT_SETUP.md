@@ -19,6 +19,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local` with your credentials:
+
 ```env
 OBSIDIAN_API_URL=https://127.0.0.1:27124
 OBSIDIAN_AUTH_TOKEN=your_token_here
@@ -34,6 +35,7 @@ node scripts/auto-export-vault.js
 ```
 
 This will:
+
 - Export README.md files from your Obsidian projects
 - Create/update `meta.json` files with project metadata
 - Not commit changes (since GIT_AUTO_COMMIT=false locally)
@@ -47,6 +49,7 @@ This will:
 The practical workflow is:
 
 1. **Run export locally when needed:**
+
    ```bash
    OBSIDIAN_AUTH_TOKEN=your_token npm run export-vault:auto
    ```
@@ -81,13 +84,13 @@ Edit `.github/workflows/export-vault.yml` to change the schedule:
 schedule:
   # Run daily at 2:00 AM UTC
   - cron: '0 2 * * *'
-  
+
   # Run daily at 12:00 PM UTC
   - cron: '0 12 * * *'
-  
+
   # Run every 6 hours
   - cron: '0 */6 * * *'
-  
+
   # Run on every Monday at 9:00 AM UTC
   - cron: '0 9 * * 1'
 ```
@@ -114,12 +117,12 @@ The Obsidian API runs locally on your machine. GitHub Actions can't access it.
 
 ## API Response Codes
 
-| Status | Meaning |
-|--------|---------|
-| 200 | Success - project exported |
-| 404 | Project not found in vault |
-| 401 | Auth token invalid |
-| 500 | Obsidian API error |
+| Status | Meaning                    |
+| ------ | -------------------------- |
+| 200    | Success - project exported |
+| 404    | Project not found in vault |
+| 401    | Auth token invalid         |
+| 500    | Obsidian API error         |
 
 The export script logs warnings for 404 responses but continues with other projects.
 

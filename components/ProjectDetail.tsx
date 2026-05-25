@@ -80,12 +80,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
         {/* Date */}
         <div className="mt-6 text-sm text-gray-500">
-          <p>
-            Créé: {new Date(project.date_created).toLocaleDateString('fr-FR')}
-          </p>
-          <p>
-            Mis à jour: {new Date(project.date_updated).toLocaleDateString('fr-FR')}
-          </p>
+          <p>Créé: {new Date(project.date_created).toLocaleDateString('fr-FR')}</p>
+          <p>Mis à jour: {new Date(project.date_updated).toLocaleDateString('fr-FR')}</p>
         </div>
       </header>
 

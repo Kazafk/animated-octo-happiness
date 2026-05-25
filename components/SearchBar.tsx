@@ -9,18 +9,18 @@ export default function SearchBar({ sticky = false }: SearchBarProps) {
   const [query, setQuery] = useState('');
   const router = useRouter();
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.trim()) {
-      router.push(`/search?q=${encodeURIComponent(query)}`);
-    }
-  }, [query, router]);
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (query.trim()) {
+        router.push(`/search?q=${encodeURIComponent(query)}`);
+      }
+    },
+    [query, router]
+  );
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={`flex gap-2 ${sticky ? 'sticky top-0 z-50' : ''}`}
-    >
+    <form onSubmit={handleSubmit} className={`flex gap-2 ${sticky ? 'sticky top-0 z-50' : ''}`}>
       <input
         type="text"
         placeholder="Rechercher les projets..."

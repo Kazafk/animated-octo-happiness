@@ -62,6 +62,7 @@ site-vitrine/
 ### Task 1: Setup initial - Créer la structure du projet
 
 **Fichiers:**
+
 - Create: `package.json`
 - Create: `tsconfig.json`
 - Create: `next.config.js`
@@ -176,6 +177,7 @@ git commit -m "chore: initial project setup"
 ### Task 2: Configuration Tailwind CSS
 
 **Fichiers:**
+
 - Create: `tailwind.config.js`
 - Create: `postcss.config.js`
 - Create: `styles/globals.css`
@@ -185,10 +187,7 @@ git commit -m "chore: initial project setup"
 ```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -250,7 +249,12 @@ body {
   @apply bg-white text-dark font-sans;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-bold;
 }
 
@@ -291,11 +295,12 @@ git commit -m "style: configure tailwind and global styles"
 ### Task 3: Setup Next.js pages - App wrapper et Layout
 
 **Fichiers:**
+
 - Create: `pages/_app.tsx`
 - Create: `pages/_document.tsx`
 - Create: `components/Layout.tsx`
 
-- [ ] **Étape 1: Créer pages/_app.tsx**
+- [ ] **Étape 1: Créer pages/\_app.tsx**
 
 ```typescript
 import type { AppProps } from 'next/app';
@@ -305,7 +310,7 @@ import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  
+
   return (
     <Layout>
       <Component {...pageProps} />
@@ -314,7 +319,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-- [ ] **Étape 2: Créer pages/_document.tsx**
+- [ ] **Étape 2: Créer pages/\_document.tsx**
 
 ```typescript
 import { Html, Head, Main, NextScript } from 'next/document';
@@ -373,6 +378,7 @@ git commit -m "feat: setup next.js app structure with layout"
 ### Task 4: Créer le composant Navigation avec SearchBar
 
 **Fichiers:**
+
 - Create: `components/Navigation.tsx`
 - Create: `components/SearchBar.tsx`
 
@@ -454,6 +460,7 @@ git commit -m "feat: add navigation and search bar components"
 ### Task 5: Créer types et helpers pour les projets
 
 **Fichiers:**
+
 - Create: `lib/projects.ts`
 
 - [ ] **Étape 1: Créer lib/projects.ts**
@@ -515,9 +522,9 @@ function readProjectContent(projectSlug: string): string {
 export function getProject(slug: string): Project | null {
   const meta = readProjectMeta(slug);
   if (!meta) return null;
-  
+
   const content = readProjectContent(slug);
-  
+
   return {
     ...meta,
     slug,
@@ -530,7 +537,7 @@ export function getProject(slug: string): Project | null {
  */
 export function getAllProjects(): Project[] {
   const projectDirs = fs.readdirSync(PROJECTS_DIR);
-  
+
   return projectDirs
     .map((dir) => getProject(dir))
     .filter((p): p is Project => p !== null)
@@ -564,6 +571,7 @@ git commit -m "feat: add project helpers and types"
 ### Task 6: Créer la logique de recherche avec Fuse.js
 
 **Fichiers:**
+
 - Create: `lib/search.ts`
 - Create: `lib/generateIndex.ts`
 
@@ -639,15 +647,15 @@ import { buildSearchIndex } from './search';
 export function generateSearchIndex(): void {
   const projects = getAllProjects();
   const index = buildSearchIndex(projects);
-  
+
   const outputPath = path.join(process.cwd(), 'public', 'search-index.json');
-  
+
   // Créer le répertoire public s'il n'existe pas
   const publicDir = path.dirname(outputPath);
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
   }
-  
+
   fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
   console.log(`✓ Search index generated: ${outputPath}`);
 }
@@ -685,6 +693,7 @@ git commit -m "feat: add search functionality with fuse.js index generation"
 ### Task 7: Créer les composants ProjectCard et ProjectGrid
 
 **Fichiers:**
+
 - Create: `components/ProjectCard.tsx`
 - Create: `components/ProjectGrid.tsx`
 
@@ -801,6 +810,7 @@ git commit -m "feat: add ProjectCard and ProjectGrid components"
 ### Task 8: Créer les composants Hero et ProjectDetail
 
 **Fichiers:**
+
 - Create: `components/Hero.tsx`
 - Create: `components/ProjectDetail.tsx`
 
@@ -1037,6 +1047,7 @@ git commit -m "feat: add Hero and ProjectDetail components with markdown renderi
 ### Task 9: Créer la page d'accueil
 
 **Fichiers:**
+
 - Modify: `pages/index.tsx`
 
 - [ ] **Étape 1: Écrire pages/index.tsx**
@@ -1113,6 +1124,7 @@ git commit -m "feat: create home page with featured and all projects"
 ### Task 10: Créer la page de détail projet avec SSG
 
 **Fichiers:**
+
 - Create: `pages/projects/[slug].tsx`
 
 - [ ] **Étape 1: Écrire pages/projects/[slug].tsx**
@@ -1172,6 +1184,7 @@ git commit -m "feat: create dynamic project detail pages with SSG"
 ### Task 11: Créer la page de recherche
 
 **Fichiers:**
+
 - Create: `components/SearchResults.tsx`
 - Create: `pages/search.tsx`
 
@@ -1279,6 +1292,7 @@ git commit -m "feat: add search results page with fuse.js integration"
 ### Task 12: Créer le script d'export depuis le vault
 
 **Fichiers:**
+
 - Create: `scripts/export-vault.js`
 
 - [ ] **Étape 1: Créer scripts/export-vault.js**
@@ -1312,7 +1326,7 @@ function httpsRequest(method, path, body = null) {
       path,
       method,
       headers: {
-        'Authorization': `Bearer ${AUTH_TOKEN}`,
+        Authorization: `Bearer ${AUTH_TOKEN}`,
         'Content-Type': 'text/markdown',
       },
       rejectUnauthorized: false, // Accept self-signed cert
@@ -1408,6 +1422,7 @@ git commit -m "feat: add vault export script"
 ### Task 13: Créer le workflow GitHub Actions
 
 **Fichiers:**
+
 - Create: `.github/workflows/deploy.yml`
 
 - [ ] **Étape 1: Créer .github/workflows/deploy.yml**
@@ -1478,6 +1493,7 @@ git commit -m "ci: add github pages deployment workflow"
 ### Task 14: Créer structure /projects avec exemple
 
 **Fichiers:**
+
 - Create: `projects/.gitkeep`
 - Create: `projects/example-project/README.md`
 - Create: `projects/example-project/meta.json`
@@ -1520,6 +1536,7 @@ git commit -m "feat: create projects directory structure with example"
 ### Task 15: Tester le build et la génération
 
 **Fichiers:**
+
 - None (testing step)
 
 - [ ] **Étape 1: Installer les dépendances**
@@ -1563,6 +1580,7 @@ git commit -m "test: verify build and static generation"
 ### Task 16: Documentation et finalisation
 
 **Fichiers:**
+
 - Create: `README.md`
 
 - [ ] **Étape 1: Créer README.md**
@@ -1590,7 +1608,9 @@ npm install
 
 \`\`\`bash
 npm run dev
+
 # Ouvrir http://localhost:3000
+
 \`\`\`
 
 ## Export depuis le vault
@@ -1607,7 +1627,9 @@ Cela peuple le répertoire `projects/` avec les README et métadonnées de chaqu
 
 \`\`\`bash
 npm run build
+
 # Génère les fichiers statiques dans `out/`
+
 \`\`\`
 
 ## Ajouter un projet
@@ -1621,16 +1643,16 @@ npm run build
 
 \`\`\`json
 {
-  "id": "unique-slug",
-  "title": "Titre du projet",
-  "description": "Description courte",
-  "tags": ["tag1", "tag2"],
-  "languages": ["Python", "JavaScript"],
-  "date_created": "2026-05-25",
-  "date_updated": "2026-05-25",
-  "featured": true,
-  "repository": "https://github.com/...",
-  "live_demo": "https://..."
+"id": "unique-slug",
+"title": "Titre du projet",
+"description": "Description courte",
+"tags": ["tag1", "tag2"],
+"languages": ["Python", "JavaScript"],
+"date_created": "2026-05-25",
+"date_updated": "2026-05-25",
+"featured": true,
+"repository": "https://github.com/...",
+"live_demo": "https://..."
 }
 \`\`\`
 
@@ -1657,6 +1679,7 @@ git commit -m "docs: add project documentation"
 ## Plan de vérification (Self-Review)
 
 ✅ **Couverture de la spec:**
+
 - ✅ Architecture hybrid export (Task 12)
 - ✅ Page d'accueil avec featured projects (Task 9)
 - ✅ Page détail projet avec markdown (Task 8, 10)
@@ -1666,17 +1689,20 @@ git commit -m "docs: add project documentation"
 - ✅ Structure /projects versionée (Task 14)
 
 ✅ **Pas de placeholders:**
+
 - ✅ Tous les composants ont du code complet
 - ✅ Tous les tests sont spécifiés (aucun test - projet vitrine)
 - ✅ Tous les chemins de fichiers sont exacts
 - ✅ Tous les commandes sont exactes
 
 ✅ **Cohérence des types:**
+
 - ✅ ProjectMeta, Project interfaces définies (Task 5)
 - ✅ Utilisées consistemment dans tous les composants
 - ✅ SearchIndex matches avec buildSearchIndex
 
 ✅ **Granularité des tâches:**
+
 - ✅ Chaque task = 2-5 minutes de travail
 - ✅ TDD où applicable (tests implicites dans les next run commands)
 - ✅ Commits fréquents après chaque task

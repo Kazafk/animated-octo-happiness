@@ -1,4 +1,5 @@
 # Revue de Conformité - Site Vitrine Portfolio
+
 **Date:** 2026-05-25  
 **Statut:** ✅ CONFORME avec 7 tâches correctives mineures
 
@@ -6,17 +7,17 @@
 
 ## 1. Vue d'ensemble de conformité
 
-| Domaine | Statut | Notes |
-|---------|--------|-------|
-| **Architecture générale** | ✅ Conforme | Hybrid export, vault→repo→statique |
-| **Pages principales** | ✅ Conforme | Home, projects/[slug], search |
-| **Composants** | ✅ Conforme | Tous implémentés et fonctionnels |
-| **Recherche** | ✅ Conforme | Fuse.js côté client avec index au build |
-| **Design** | ⚠️ Mineur | Utilise `<img>` au lieu de `<Image>` Next.js |
-| **Stack technologique** | ✅ Conforme | Next.js 14, React 18, TypeScript, Tailwind |
-| **Déploiement** | ✅ Conforme | GitHub Pages + Actions configurés |
-| **Contenu** | ✅ Conforme | 5 projets présents et complets |
-| **Versionning** | ✅ Conforme | Git versionné, commits fréquents |
+| Domaine                   | Statut      | Notes                                        |
+| ------------------------- | ----------- | -------------------------------------------- |
+| **Architecture générale** | ✅ Conforme | Hybrid export, vault→repo→statique           |
+| **Pages principales**     | ✅ Conforme | Home, projects/[slug], search                |
+| **Composants**            | ✅ Conforme | Tous implémentés et fonctionnels             |
+| **Recherche**             | ✅ Conforme | Fuse.js côté client avec index au build      |
+| **Design**                | ⚠️ Mineur   | Utilise `<img>` au lieu de `<Image>` Next.js |
+| **Stack technologique**   | ✅ Conforme | Next.js 14, React 18, TypeScript, Tailwind   |
+| **Déploiement**           | ✅ Conforme | GitHub Pages + Actions configurés            |
+| **Contenu**               | ✅ Conforme | 5 projets présents et complets               |
+| **Versionning**           | ✅ Conforme | Git versionné, commits fréquents             |
 
 **Score global: 95/100**
 
@@ -29,6 +30,7 @@
 **Spec:** Créer un site vitrine présentant une collection complète de projets et travaux techniques.
 
 **Réalité:**
+
 - ✅ Site créé et déployé sur GitHub Pages
 - ✅ 5 projets actifs: Agentic Testing Framework, Carto Cobol, IA & Management, Pacbase-transpiler, Mainframe Virtualization
 - ✅ Portfolio personnel avec documentation technique
@@ -41,12 +43,15 @@
 ### 2.2 Caractéristiques principales
 
 #### 2.2.1 Contenu
+
 **Spec:**
+
 - Portfolio complet de tous les projets du vault Obsidian
 - Types variés: frameworks, parseurs, outils, expériences, recherche
 - Contenu: README.md, métadonnées, images/screenshots
 
 **Réalité:**
+
 - ✅ 5 projets du vault sont exportés
 - ✅ Chaque projet a README.md + meta.json
 - ✅ Structure versionée dans /projects/
@@ -56,13 +61,16 @@
 **Conformité:** ✅ **CONFORME** (images optionnelles, contenu/métadonnées complets)
 
 #### 2.2.2 Fonctionnalités utilisateur
+
 **Spec:**
+
 - Moteur de recherche côté client
 - Page d'accueil avec featured projects + grille complète
 - Détail projet avec contenu markdown complet
 - Design vibrant avec images, badges, animations
 
 **Réalité:**
+
 - ✅ Fuse.js implémenté, recherche instantanée, index généré au build
 - ✅ Page d'accueil avec hero section
 - ✅ Section "Projets en vedette" (mais `featured` = false pour tous les projets)
@@ -75,7 +83,9 @@
 **Conformité:** ✅ **CONFORME** (toutes les fonctionnalités implémentées)
 
 #### 2.2.3 Architecture technique
+
 **Spec:**
+
 - Framework: Next.js (React)
 - Déploiement: GitHub Pages avec GitHub Actions
 - Stockage contenu: Markdown + JSON dans `/projects`
@@ -83,6 +93,7 @@
 - Synchronisation: Export semi-automatisé depuis vault Obsidian
 
 **Réalité:**
+
 - ✅ Next.js 14.2.35
 - ✅ GitHub Pages + GitHub Actions (deploy.yml + export-vault.yml)
 - ✅ Contenu en /projects/ (5 projets, chacun avec README.md + meta.json)
@@ -97,6 +108,7 @@
 ### 2.3 Structure du repository
 
 **Spec:**
+
 ```
 docs/superpowers/specs/          ✅ Présent
 pages/                             ✅ Présent
@@ -111,10 +123,11 @@ package.json                       ✅ Présent
 ```
 
 **Fichiers clés présents:**
+
 - ✅ pages/index.tsx (accueil)
 - ✅ pages/projects/[slug].tsx (détail projet)
 - ✅ pages/search.tsx (recherche)
-- ✅ pages/_app.tsx, _document.tsx
+- ✅ pages/\_app.tsx, \_document.tsx
 - ✅ components/ProjectCard.tsx, ProjectDetail.tsx, ProjectGrid.tsx
 - ✅ components/Hero.tsx, Navigation.tsx, SearchBar.tsx
 - ✅ components/MarkdownRenderer.tsx, Layout.tsx
@@ -131,13 +144,15 @@ package.json                       ✅ Présent
 ### 2.4 Pages et composants
 
 **Pages implémentées:**
+
 - ✅ / (accueil avec hero + featured + all projects)
 - ✅ /projects/[slug] (détail avec SSG)
 - ✅ /search (résultats recherche)
-- ✅ /_app.tsx (wrapper app)
-- ✅ /_document.tsx (HTML setup)
+- ✅ /\_app.tsx (wrapper app)
+- ✅ /\_document.tsx (HTML setup)
 
 **Composants implémentés:**
+
 - ✅ Hero: Section hero colorée avec description
 - ✅ Navigation: Header avec SearchBar
 - ✅ ProjectCard: Carte compact pour grille
@@ -155,6 +170,7 @@ package.json                       ✅ Présent
 ### 2.5 Moteur de recherche
 
 **Spec:**
+
 - Librairie: Fuse.js (léger, ~16KB)
 - Index généré au build time
 - Contient: titre, description, tags, contenu
@@ -162,6 +178,7 @@ package.json                       ✅ Présent
 - Champs indexés: title (poids fort), tags, description, contenu
 
 **Réalité:**
+
 - ✅ Fuse.js v7.0.0 implémenté
 - ✅ Index généré au build (generateIndex.js appelé dans next.config.js)
 - ✅ public/search-index.json créé avec titre, description, tags, slug
@@ -177,11 +194,13 @@ package.json                       ✅ Présent
 ### 2.6 Déploiement et CI/CD
 
 **Spec:**
+
 - Trigger: Push sur branche `main`
 - Étapes: checkout, Node setup, npm install, build, export, deploy gh-pages
 - URL: https://[username].github.io/site-vitrine
 
 **Réalité:**
+
 - ✅ Workflow deploy.yml présent
 - ✅ Déclenché sur push à la branche `master` (utilisateur a master, pas main)
 - ✅ Étapes complètes: checkout v4, setup-node v4, npm ci, npm run build
@@ -197,6 +216,7 @@ package.json                       ✅ Présent
 ### 2.7 Stack technologique
 
 **Spec:**
+
 ```
 Core:
 - next ^14.0
@@ -224,6 +244,7 @@ Dev:
 ```
 
 **Réalité:**
+
 ```
 Core:
 - ✅ next 14.2.35
@@ -264,11 +285,13 @@ Types:
 ### 2.8 Build et export
 
 **Spec:**
+
 - next.config.js avec output: 'export'
 - basePath: '/site-vitrine'
 - Build command: next build && next export
 
 **Réalité:**
+
 - ✅ next.config.js configuré
 - ✅ output: 'export' présent
 - ✅ basePath: '/animated-octo-happiness' (adapté au repo réel)
@@ -291,15 +314,15 @@ Toutes les fonctionnalités essentielles sont implémentées et fonctionnelles.
 
 ### 🟡 IMPORTANT (6 tâches de qualité)
 
-| ID | Tâche | Impact | Effort |
-|----|----|--------|--------|
-| 1 | Ajouter tsconfig.json explicite | Clarté, linting | 5 min |
-| 2 | Créer fichiers featured-image.png pour les projets | UX visual | 15 min |
-| 3 | Remplacer `<img>` par `<Image>` Next.js | Performance, SEO | 20 min |
-| 4 | Ajouter prettier pour formatting | Dev DX | 10 min |
-| 5 | Ajouter framer-motion pour animations avancées | UX polish | 30 min |
-| 6 | Marquer au moins 1 projet comme `featured: true` | UX, spec | 5 min |
-| 7 | Fixer warning ESLint sur dependency dans SearchResults | Code quality | 5 min |
+| ID  | Tâche                                                  | Impact           | Effort |
+| --- | ------------------------------------------------------ | ---------------- | ------ |
+| 1   | Ajouter tsconfig.json explicite                        | Clarté, linting  | 5 min  |
+| 2   | Créer fichiers featured-image.png pour les projets     | UX visual        | 15 min |
+| 3   | Remplacer `<img>` par `<Image>` Next.js                | Performance, SEO | 20 min |
+| 4   | Ajouter prettier pour formatting                       | Dev DX           | 10 min |
+| 5   | Ajouter framer-motion pour animations avancées         | UX polish        | 30 min |
+| 6   | Marquer au moins 1 projet comme `featured: true`       | UX, spec         | 5 min  |
+| 7   | Fixer warning ESLint sur dependency dans SearchResults | Code quality     | 5 min  |
 
 ---
 
@@ -310,6 +333,7 @@ Toutes les fonctionnalités essentielles sont implémentées et fonctionnelles.
 **Raison:** Bien que Next.js crée implicitement un tsconfig.json, avoir un fichier explicite dans le repo améliore la clarté et la reproducibilité.
 
 **Code:**
+
 ```json
 {
   "compilerOptions": {
@@ -342,6 +366,7 @@ Toutes les fonctionnalités essentielles sont implémentées et fonctionnelles.
 ### Tâche 2: Créer des images featured pour les projets
 
 **Fichiers à créer:**
+
 - `projects/agentic-testing-framework/featured-image.png`
 - `projects/carto-cobol/featured-image.png`
 - `projects/ia--management/featured-image.png`
@@ -357,19 +382,18 @@ Toutes les fonctionnalités essentielles sont implémentées et fonctionnelles.
 ### Tâche 3: Remplacer `<img>` par `<Image>` Next.js
 
 **Fichiers concernés:**
+
 - components/ProjectCard.tsx (ligne 15)
 - components/ProjectDetail.tsx (ligne 16)
 
 **Code actuel:**
+
 ```tsx
-<img
-  src={project.featured_image}
-  alt={project.title}
-  className="w-full h-full object-cover"
-/>
+<img src={project.featured_image} alt={project.title} className="w-full h-full object-cover" />
 ```
 
 **Code corrigé:**
+
 ```tsx
 import Image from 'next/image';
 
@@ -380,7 +404,7 @@ import Image from 'next/image';
   height={400}
   className="w-full h-full object-cover"
   priority={false}
-/>
+/>;
 ```
 
 **Raison:** ESLint warning, optimisation d'images, LCP meilleur.
@@ -392,6 +416,7 @@ import Image from 'next/image';
 **Fichier:** `.prettierrc`
 
 **Code:**
+
 ```json
 {
   "semi": true,
@@ -404,6 +429,7 @@ import Image from 'next/image';
 ```
 
 **Dans package.json, ajouter script:**
+
 ```json
 "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,json,md}\""
 ```
@@ -415,11 +441,13 @@ import Image from 'next/image';
 ### Tâche 5: Ajouter framer-motion pour animations avancées
 
 **Installation:**
+
 ```bash
 npm install framer-motion
 ```
 
 **Utilisation exemple dans ProjectCard:**
+
 ```tsx
 import { motion } from 'framer-motion';
 
@@ -429,7 +457,7 @@ import { motion } from 'framer-motion';
   transition={{ duration: 0.5 }}
 >
   {/* contenu */}
-</motion.div>
+</motion.div>;
 ```
 
 **Raison:** Spec mentionne "animations subtiles", framer-motion offre meilleure contrôle.
@@ -441,6 +469,7 @@ import { motion } from 'framer-motion';
 ### Tâche 6: Marquer au moins 1 projet comme featured
 
 **Fichiers à modifier:**
+
 - `projects/carto-cobol/meta.json` (changer `"featured": false` → `"featured": true`)
 
 **Raison:** La page d'accueil affiche une section "Projets en vedette" mais aucun projet n'est marqué `featured: true`. Cela crée une section vide.
@@ -452,12 +481,14 @@ import { motion } from 'framer-motion';
 **Fichier:** `components/SearchResults.tsx` ligne 41
 
 **Warning:**
+
 ```
-React Hook useEffect has a missing dependency: 'router.basePath'. 
+React Hook useEffect has a missing dependency: 'router.basePath'.
 Either include it or remove the dependency array.
 ```
 
 **Code actuel:**
+
 ```tsx
 useEffect(() => {
   if (!q) return;
@@ -466,20 +497,22 @@ useEffect(() => {
 ```
 
 **Code corrigé (option 1 - supprimer le problème):**
+
 ```tsx
 useEffect(() => {
   if (!q) return;
-  
+
   const performSearch = async () => {
     const basePath = router.basePath || '';
     // ... rest of code
   };
-  
+
   performSearch();
 }, [q, router.basePath]);
 ```
 
 **Ou (option 2 - eslint-disable):**
+
 ```tsx
 useEffect(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -497,6 +530,7 @@ useEffect(() => {
 ### Conformité générale: **95/100** ✅
 
 **Points forts:**
+
 - ✅ Architecture bien pensée et implémentée
 - ✅ Stack technologique moderne et cohérente
 - ✅ Toutes les fonctionnalités principales présentes et fonctionnelles
@@ -506,6 +540,7 @@ useEffect(() => {
 - ✅ Build statique performant
 
 **Points d'amélioration:**
+
 - 🟡 Images featured manquantes (impacts UX)
 - 🟡 Utilisation de `<img>` au lieu de `<Image>`
 - 🟡 Aucun projet marqué featured (section vide)
@@ -517,15 +552,18 @@ useEffect(() => {
 ## 5. Plan d'action recommandé
 
 ### Phase 1: CRITIQUE (0.5 jour)
+
 1. ✅ **Tâche 6:** Marquer Carto Cobol comme featured (5 min)
 2. ✅ **Tâche 1:** Ajouter tsconfig.json (5 min)
 3. ✅ **Tâche 7:** Fixer warning ESLint SearchResults (5 min)
 
 ### Phase 2: HAUTE PRIORITÉ (1 jour)
+
 4. 🟡 **Tâche 2:** Créer images featured pour les projets (1-2 heures)
 5. 🟡 **Tâche 3:** Remplacer `<img>` par `<Image>` (20 min)
 
 ### Phase 3: NICE-TO-HAVE (optionnel)
+
 6. ✨ **Tâche 4:** Ajouter prettier (10 min)
 7. ✨ **Tâche 5:** Intégrer framer-motion (30 min)
 

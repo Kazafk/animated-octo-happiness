@@ -8,15 +8,15 @@
 
 ## 📋 Tableau de synthèse
 
-| ID | Tâche | Priorité | Effort | Impact | Status |
-|----|----|----------|--------|--------|--------|
-| 1 | Ajouter tsconfig.json | 🔵 HAUTE | 5 min | Dev clarity | ⬜ TODO |
-| 2 | Marquer 1 projet featured | 🔵 HAUTE | 5 min | UX: section visible | ⬜ TODO |
-| 3 | Fixer warning ESLint SearchResults | 🔵 HAUTE | 5 min | Code quality | ⬜ TODO |
-| 4 | Créer featured-image.png (5×) | 🟡 MOYENNE | 1-2h | UX: couvertures visuelles | ⬜ TODO |
-| 5 | Remplacer `<img>` par `<Image>` | 🟡 MOYENNE | 20 min | Performance, SEO | ⬜ TODO |
-| 6 | Ajouter prettier | 🟢 BASSE | 10 min | Dev DX | ⬜ TODO |
-| 7 | Intégrer framer-motion | 🟢 BASSE | 30 min | Animations polish | ⬜ TODO |
+| ID  | Tâche                              | Priorité   | Effort | Impact                    | Status  |
+| --- | ---------------------------------- | ---------- | ------ | ------------------------- | ------- |
+| 1   | Ajouter tsconfig.json              | 🔵 HAUTE   | 5 min  | Dev clarity               | ⬜ TODO |
+| 2   | Marquer 1 projet featured          | 🔵 HAUTE   | 5 min  | UX: section visible       | ⬜ TODO |
+| 3   | Fixer warning ESLint SearchResults | 🔵 HAUTE   | 5 min  | Code quality              | ⬜ TODO |
+| 4   | Créer featured-image.png (5×)      | 🟡 MOYENNE | 1-2h   | UX: couvertures visuelles | ⬜ TODO |
+| 5   | Remplacer `<img>` par `<Image>`    | 🟡 MOYENNE | 20 min | Performance, SEO          | ⬜ TODO |
+| 6   | Ajouter prettier                   | 🟢 BASSE   | 10 min | Dev DX                    | ⬜ TODO |
+| 7   | Intégrer framer-motion             | 🟢 BASSE   | 30 min | Animations polish         | ⬜ TODO |
 
 ---
 
@@ -73,10 +73,13 @@
 
 1. Ouvrir le fichier meta.json
 2. Changer ligne 12:
+
    ```json
    "featured": false,
    ```
+
    vers:
+
    ```json
    "featured": true,
    ```
@@ -100,6 +103,7 @@
 2. Ajouter `router.basePath` à la dépendance:
 
 **Avant:**
+
 ```tsx
 useEffect(() => {
   if (!q) return;
@@ -108,6 +112,7 @@ useEffect(() => {
 ```
 
 **Après:**
+
 ```tsx
 useEffect(() => {
   if (!q) return;
@@ -121,10 +126,10 @@ useEffect(() => {
 ```tsx
 useEffect(() => {
   if (!q) return;
-  
+
   const performSearch = async () => {
     setIsLoading(true);
-    
+
     try {
       const basePath = router.basePath || '';
       const indexUrl = `${basePath}/search-index.json`;
@@ -136,7 +141,7 @@ useEffect(() => {
       setIsLoading(false);
     }
   };
-  
+
   performSearch();
 }, [q, router.basePath]);
 ```
@@ -152,6 +157,7 @@ useEffect(() => {
 ### Tâche 4: Créer images featured pour tous les projets
 
 **Fichiers à créer:**
+
 - `projects/agentic-testing-framework/featured-image.png`
 - `projects/carto-cobol/featured-image.png`
 - `projects/ia--management/featured-image.png`
@@ -188,6 +194,7 @@ useEffect(() => {
 ### Tâche 5: Remplacer `<img>` par `<Image>` Next.js
 
 **Fichiers concernés:**
+
 - `components/ProjectCard.tsx`
 - `components/ProjectDetail.tsx`
 
@@ -196,6 +203,7 @@ useEffect(() => {
 1. **Dans ProjectCard.tsx:**
 
 **Avant (ligne 15-18):**
+
 ```tsx
 {project.featured_image ? (
   <img
@@ -207,6 +215,7 @@ useEffect(() => {
 ```
 
 **Après:**
+
 ```tsx
 {project.featured_image ? (
   <Image
@@ -221,6 +230,7 @@ useEffect(() => {
 ```
 
 2. **Ajouter import en haut du fichier:**
+
 ```tsx
 import Image from 'next/image';
 ```
@@ -244,11 +254,13 @@ import Image from 'next/image';
 **Étapes:**
 
 1. Installer prettier:
+
 ```bash
 npm install --save-dev prettier
 ```
 
 2. Créer `.prettierrc`:
+
 ```json
 {
   "semi": true,
@@ -262,6 +274,7 @@ npm install --save-dev prettier
 ```
 
 3. Créer `.prettierignore`:
+
 ```
 node_modules/
 out/
@@ -270,12 +283,14 @@ public/search-index.json
 ```
 
 4. Ajouter script dans `package.json`:
+
 ```json
 "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,json,md}\"",
 "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,css,json,md}\""
 ```
 
 5. Ajouter prettier à ESLint dans `.eslintrc.json` (créer le fichier si absent):
+
 ```json
 {
   "extends": ["next/core-web-vitals", "prettier"]
@@ -283,6 +298,7 @@ public/search-index.json
 ```
 
 6. Formatter le code:
+
 ```bash
 npm run format
 ```
@@ -298,6 +314,7 @@ npm run format
 **Étapes:**
 
 1. Installer:
+
 ```bash
 npm install framer-motion
 ```
@@ -345,7 +362,7 @@ export default function Hero() {
         >
           Portfolio Technique
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -371,21 +388,25 @@ export default function Hero() {
 ## ✅ Checklist d'exécution
 
 ### Phase 1 (CRITIQUE)
+
 - [ ] Tâche 1: tsconfig.json ajouté
 - [ ] Tâche 2: Carto Cobol marqué featured
 - [ ] Tâche 3: Warning ESLint résolu
 - [ ] Tests: `npm run build` réussit sans warning
 
 ### Phase 2 (HAUTE QUALITÉ)
+
 - [ ] Tâche 4: 5 featured-image.png créées et placées
 - [ ] Tâche 5: `<img>` remplacés par `<Image>`
 - [ ] Tests: Site fonctionne, images affichées correctement
 
 ### Phase 3 (OPTIONNEL)
+
 - [ ] Tâche 6: prettier installé et configuré
 - [ ] Tâche 7: framer-motion intégré et testé
 
 ### Finalisation
+
 - [ ] `npm run build` passe sans erreurs ni warnings
 - [ ] Tous les commits effectués
 - [ ] `git log` montre les commits correctives
@@ -396,6 +417,7 @@ export default function Hero() {
 ## 📝 Commandes rapides
 
 **Exécuter Phase 1 complète:**
+
 ```bash
 # Tâche 1: créer tsconfig.json (voir contenu plus haut)
 # Tâche 2: éditer projects/carto-cobol/meta.json
@@ -406,6 +428,7 @@ git commit -m "chore: add tsconfig.json and fix phase-1 items"
 ```
 
 **Exécuter Phase 2 complète:**
+
 ```bash
 # Tâche 4: placer 5 images PNG
 # Tâche 5: éditer ProjectCard et ProjectDetail
@@ -415,6 +438,7 @@ git commit -m "perf: add featured images and optimize Image component"
 ```
 
 **Exécuter Phase 3 (optionnel):**
+
 ```bash
 npm install --save-dev prettier
 # Tâche 6: créer .prettierrc (voir contenu)
@@ -430,11 +454,11 @@ git commit -m "chore: add prettier and framer-motion"
 
 ## 🎯 Résumé impact
 
-| Phase | Tâches | Temps | Impact |
-|-------|--------|-------|--------|
-| **1** | 3 tâches | 15 min | ✅ Site conforme spec, zéro warnings |
-| **2** | 2 tâches | 1.5h | ✅ UX visuelle complète, performance optimale |
-| **3** | 2 tâches | 40 min | ✨ Code plus beau, animations premium |
+| Phase | Tâches   | Temps  | Impact                                        |
+| ----- | -------- | ------ | --------------------------------------------- |
+| **1** | 3 tâches | 15 min | ✅ Site conforme spec, zéro warnings          |
+| **2** | 2 tâches | 1.5h   | ✅ UX visuelle complète, performance optimale |
+| **3** | 2 tâches | 40 min | ✨ Code plus beau, animations premium         |
 
 **Total recommandé:** Phase 1 + 2 = **1.75 heures** pour un site vraiment polish.
 
