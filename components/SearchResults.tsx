@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { searchProjects, initializeSearch } from '@/lib/search';
+import { searchProjects, initializeSearch, SearchIndex } from '@/lib/search';
 import ProjectGrid from './ProjectGrid';
-import { getAllProjects } from '@/lib/projects';
 
 export default function SearchResults() {
   const router = useRouter();
@@ -16,28 +15,25 @@ export default function SearchResults() {
     const performSearch = async () => {
       setIsLoading(true);
 
-      // Initialiser l'index avec tous les projets
-      const allProjects = getAllProjects();
-      const index = allProjects.map((p) => ({
-        id: p.id,
-        slug: p.slug,
-        title: p.title,
-        description: p.description,
-        tags: p.tags || [],
-      }));
+      try {
+        // Charger l'index de recherche généré au build
+        const indexResponse = await fetch('/search-index.json');
+        const index: SearchIndex[] = await indexResponse.json();
 
-      initializeSearch(index);
+        // Initialiser Fuse.js avec l'index
+        initializeSearch(index);
 
-      // Effectuer la recherche
-      const searchResults = searchProjects(String(q));
+        // Effectuer la recherche
+        const searchResults = searchProjects(String(q));
 
-      // Mapper les résultats aux projets complets
-      const projectResults = searchResults
-        .map((r) => allProjects.find((p) => p.slug === r.slug))
-        .filter(Boolean);
-
-      setResults(projectResults);
-      setIsLoading(false);
+        // Les résultats incluent déjà les informations du projet
+        setResults(searchResults);
+      } catch (err) {
+        console.error('Failed to perform search:', err);
+        setResults([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     performSearch();

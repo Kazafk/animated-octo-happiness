@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getProject, getProjectSlugs, getAllProjects } from '@/lib/projects';
+import { getProject, getProjectSlugs } from '@/lib/projects';
 import ProjectDetail from '@/components/ProjectDetail';
 
 export async function getStaticPaths() {

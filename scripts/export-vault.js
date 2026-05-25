@@ -57,7 +57,7 @@ async function exportProject(projectName) {
 
   // Lire le README
   try {
-    const response = await httpsRequest('GET', `/vault/${projectName}/README.md`);
+    const response = await httpsRequest('GET', `/vault/${encodeURIComponent(projectName)}/README.md`);
     if (response.status === 200) {
       fs.writeFileSync(path.join(projectDir, 'README.md'), response.data);
       console.log(`  ✓ README.md exported`);
