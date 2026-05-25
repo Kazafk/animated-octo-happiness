@@ -1,26 +1,22 @@
 import Head from 'next/head';
-import { getAllProjects, getFeaturedProjects } from '@/lib/projects';
+import { getAllProjects } from '@/lib/projects';
 import Hero from '@/components/Hero';
 import ProjectGrid from '@/components/ProjectGrid';
 
 export async function getStaticProps() {
   const allProjects = getAllProjects();
-  const featuredProjects = getFeaturedProjects();
 
   return {
     props: {
       allProjects,
-      featuredProjects,
     },
   };
 }
 
 export default function Home({
   allProjects,
-  featuredProjects,
 }: {
   allProjects: any[];
-  featuredProjects: any[];
 }) {
   return (
     <>
@@ -33,14 +29,6 @@ export default function Home({
       </Head>
 
       <Hero />
-
-      {/* Section Featured Projects */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8 text-center">Projets en vedette</h2>
-          <ProjectGrid projects={featuredProjects} />
-        </div>
-      </section>
 
       {/* Section All Projects */}
       <section className="py-12 bg-light">
