@@ -1,5 +1,5 @@
 // Générer l'index de recherche au build
-const { generateSearchIndex } = require('./lib/generateIndex');
+const { generateSearchIndex } = require('./lib/generateIndex.js');
 generateSearchIndex();
 
 /** @type {import('next').NextConfig} */
