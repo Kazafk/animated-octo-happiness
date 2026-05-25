@@ -86,7 +86,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       </header>
 
       {/* Contenu markdown */}
-      <div className="prose max-w-none">
+      <div className="markdown-content mt-8">
         <MarkdownRenderer content={project.content} />
       </div>
     </article>
