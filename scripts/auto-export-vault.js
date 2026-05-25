@@ -10,7 +10,7 @@ const GIT_AUTO_COMMIT = process.env.GIT_AUTO_COMMIT === 'true';
 
 // Projects list: can be simple names or paths like "Mainframe Virtualization/mvs-tk5"
 const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST ||
-  'Agentic Testing Framework,Carto Cobol,Pacbase-transpiler,' +
+  'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,' +
   'Mainframe Virtualization/mvs-tk5,Mainframe Virtualization/suite3270-4.5'
 ).split(',').map(p => p.trim());
 
@@ -59,10 +59,19 @@ async function exportProject(projectPath) {
     fs.mkdirSync(projectDir, { recursive: true });
   }
 
-  // Fetch README from vault path
+  // Fetch README from vault path (try README.md first, then Index.md)
   const vaultPath = parts.map(encodeURIComponent).join('/');
+  let readmeContent = null;
+
   try {
-    const response = await httpsRequest('GET', `/vault/${vaultPath}/README.md`);
+    // Try README.md first
+    let response = await httpsRequest('GET', `/vault/${vaultPath}/README.md`);
+
+    // If README.md not found, try Index.md
+    if (response.status === 404) {
+      response = await httpsRequest('GET', `/vault/${vaultPath}/Index.md`);
+    }
+
     if (response.status === 200) {
       fs.writeFileSync(path.join(projectDir, 'README.md'), response.data);
       console.log(`  ✓ README.md exported`);

@@ -23,7 +23,7 @@ jobs:
         env:
           OBSIDIAN_API_URL: ${{ secrets.OBSIDIAN_API_URL }}
           OBSIDIAN_AUTH_TOKEN: ${{ secrets.OBSIDIAN_AUTH_TOKEN }}
-          PROJECTS_LIST: ${{ vars.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,Pacbase-transpiler,Mainframe Virtualization/mvs-tk5,Mainframe Virtualization/suite3270-4.5' }}
+          PROJECTS_LIST: ${{ vars.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,Mainframe Virtualization/mvs-tk5,Mainframe Virtualization/suite3270-4.5' }}
           GIT_AUTO_COMMIT: 'false'
         run: node scripts/auto-export-vault.js
         continue-on-error: true
