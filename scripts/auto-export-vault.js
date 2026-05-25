@@ -8,8 +8,11 @@ const AUTH_TOKEN = process.env.OBSIDIAN_AUTH_TOKEN;
 const OUTPUT_DIR = path.join(__dirname, '..', 'projects');
 const GIT_AUTO_COMMIT = process.env.GIT_AUTO_COMMIT === 'true';
 
-// Projects list from environment or use default
-const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST || 'Agentic Testing Framework,Carto Cobol,IA & Management,Pacbase-transpiler,mvs-tk5,suite3270-4.5').split(',').map(p => p.trim());
+// Projects list: can be simple names or paths like "Mainframe Virtualization/mvs-tk5"
+const PROJECTS_TO_EXPORT = (process.env.PROJECTS_LIST ||
+  'Agentic Testing Framework,Carto Cobol,Pacbase-transpiler,' +
+  'Mainframe Virtualization/mvs-tk5,Mainframe Virtualization/suite3270-4.5'
+).split(',').map(p => p.trim());
 
 if (!AUTH_TOKEN) {
   console.error('Error: OBSIDIAN_AUTH_TOKEN environment variable is not set');
@@ -43,19 +46,23 @@ function httpsRequest(method, pathname, body = null) {
   });
 }
 
-async function exportProject(projectName) {
+async function exportProject(projectPath) {
+  // projectPath can be "Project Name" or "Category/Project Name"
+  const parts = projectPath.split('/').map(p => p.trim());
+  const projectName = parts[parts.length - 1];
   const slug = projectName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
   const projectDir = path.join(OUTPUT_DIR, slug);
 
-  console.log(`Exporting ${projectName}...`);
+  console.log(`Exporting ${projectPath}...`);
 
   if (!fs.existsSync(projectDir)) {
     fs.mkdirSync(projectDir, { recursive: true });
   }
 
-  // Fetch README
+  // Fetch README from vault path
+  const vaultPath = parts.map(encodeURIComponent).join('/');
   try {
-    const response = await httpsRequest('GET', `/vault/${encodeURIComponent(projectName)}/README.md`);
+    const response = await httpsRequest('GET', `/vault/${vaultPath}/README.md`);
     if (response.status === 200) {
       fs.writeFileSync(path.join(projectDir, 'README.md'), response.data);
       console.log(`  ✓ README.md exported`);
@@ -87,7 +94,6 @@ async function exportProject(projectName) {
     fs.writeFileSync(metaPath, JSON.stringify(defaultMeta, null, 2));
     console.log(`  ✓ meta.json created`);
   } else {
-    // Update date_updated if README was exported
     try {
       const existing = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
       existing.date_updated = new Date().toISOString();
@@ -109,12 +115,12 @@ async function main() {
   let exported = 0;
   let failed = 0;
 
-  for (const projectName of PROJECTS_TO_EXPORT) {
+  for (const projectPath of PROJECTS_TO_EXPORT) {
     try {
-      await exportProject(projectName);
+      await exportProject(projectPath);
       exported++;
     } catch (err) {
-      console.error(`  ✗ Error exporting ${projectName}:`, err.message);
+      console.error(`  ✗ Error exporting ${projectPath}:`, err.message);
       failed++;
     }
   }

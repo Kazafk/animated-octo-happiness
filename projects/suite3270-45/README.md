@@ -1,4 +1,4 @@
-> Voir aussi : [[suite3270-4.5/st-relay-README]] | [[suite3270-4.5/LICENSE]]
+> Voir aussi : [[st-relay-README]] | [[LICENSE]]
 
 x3270 is a family of IBM 3270 terminal emulators and related tools.
 
